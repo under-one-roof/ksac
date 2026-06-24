@@ -42,11 +42,57 @@ h1, h2, h3, h4, h5, .navbar-brand {
 .navbar .nav-link:hover { color: var(--orange) !important; }
 
 /* Mega Menu */
+/* Mega Menu Responsive */
 .mega-menu {
-    width: 600px;
+    width: 100%; /* Ubah dari 600px menjadi 100% */
+    max-width: 600px; /* Maksimal lebar di desktop */
     background: var(--dark-navy);
     border: 1px solid var(--glass-border);
     border-radius: 15px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%); /* Posisikan menu persis di tengah */
+}
+
+/* Style untuk item di dalam mega menu */
+.mega-item {
+    text-decoration: none;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    padding: 10px 5px;
+    border-radius: 10px;
+}
+
+.mega-item:hover {
+    color: var(--orange);
+    background: rgba(255, 255, 255, 0.05); /* Efek hover lembut */
+    transform: translateY(-3px);
+}
+
+/* Agar menu tidak keluar dari layar HP */
+@media (max-width: 991.98px) {
+    .dropdown-menu.mega-menu {
+        position: static;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        background: transparent;
+        border: none;
+        padding-left: 1rem;
+    }
+    .mega-item {
+        text-align: center;
+    }
+    .mega-item h6 {
+        font-size: 0.9rem;
+    }
+    .mega-item i {
+        font-size: 1.5rem !important; /* Kecilkan ikon di HP */
+    }
 }
 .mega-menu a { text-decoration: none; color: var(--white); display: flex; flex-direction: column; align-items: center; transition: 0.3s; padding: 10px; }
 .mega-menu a:hover { color: var(--orange); transform: translateY(-5px); }
