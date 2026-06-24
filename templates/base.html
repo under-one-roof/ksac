@@ -32,15 +32,40 @@
             <div class="collapse navbar-collapse" id="navMain">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
-                    <li class="nav-item dropdown mega-dropdown">
+                    
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
-                        <div class="dropdown-menu mega-menu p-4">
-                            <div class="row text-center">
-                                <div class="col"><a href="{{ url_for('category', slug='outdoor') }}"><i class="fas fa-campground fa-2x text-orange"></i><h6 class="mt-2">Outdoor</h6></a></div>
-                                <div class="col"><a href="{{ url_for('category', slug='furniture') }}"><i class="fas fa-couch fa-2x text-orange"></i><h6 class="mt-2">Furniture</h6></a></div>
-                                <div class="col"><a href="{{ url_for('category', slug='acrylic') }}"><i class="fas fa-square-full fa-2x text-orange"></i><h6 class="mt-2">Acrylic</h6></a></div>
-                                <div class="col"><a href="{{ url_for('category', slug='t-shirt') }}"><i class="fas fa-tshirt fa-2x text-orange"></i><h6 class="mt-2">T-Shirt</h6></a></div>
-                                <div class="col"><a href="{{ url_for('category', slug='perfume') }}"><i class="fas fa-spray-can fa-2x text-orange"></i><h6 class="mt-2">Perfume</h6></a></div>
+                        <div class="dropdown-menu mega-menu p-3">
+                            <div class="row text-center g-2">
+                                <div class="col-6 col-md">
+                                    <a href="{{ url_for('category', slug='outdoor') }}" class="mega-item">
+                                        <i class="fas fa-campground fa-2x text-orange mb-2"></i>
+                                        <h6 class="mb-0">Outdoor</h6>
+                                    </a>
+                                </div>
+                                <div class="col-6 col-md">
+                                    <a href="{{ url_for('category', slug='furniture') }}" class="mega-item">
+                                        <i class="fas fa-couch fa-2x text-orange mb-2"></i>
+                                        <h6 class="mb-0">Furniture</h6>
+                                    </a>
+                                </div>
+                                <div class="col-6 col-md">
+                                    <a href="{{ url_for('category', slug='acrylic') }}" class="mega-item">
+                                        <i class="fas fa-square-full fa-2x text-orange mb-2"></i>
+                                        <h6 class="mb-0">Acrylic</h6>
+                                    </a>
+                                </div>
+                                <div class="col-6 col-md">
+                                    <a href="{{ url_for('category', slug='t-shirt') }}" class="mega-item">
+                                        <i class="fas fa-tshirt fa-2x text-orange mb-2"></i>
+                                        <h6 class="mb-0">T-Shirt</h6>
+                                    </a>
+                                </div>
+                                <div class="col-6 col-md">
+                                    <a href="{{ url_for('category', slug='perfume') }}" class="mega-item">
+                                        <i class="fas fa-spray-can fa-2x text-orange mb-2"></i>
+                                        <h6 class="mb-0">Perfume</h6>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </li>
