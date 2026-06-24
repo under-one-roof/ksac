@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Project Gallery</h2>
+        <!-- Masonry using CSS columns -->
+        <div class="masonry-grid">
+            {% for g in galleries %}
+            <div class="masonry-item" data-aos="zoom-in">
+                <img src="{{ g.image_url }}" alt="{{ g.title }}" class="img-fluid rounded-3 mb-4">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

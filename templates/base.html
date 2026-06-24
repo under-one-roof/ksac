@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id" class="{{ 'dark-mode' if dark_mode else 'light-mode' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UNDER ONE ROOF INDONESIA{% endblock %}</title>
+    <meta name="description" content="Premium Company Profile & Catalog: Outdoor, Furniture, Acrylic, T-Shirt, Perfume.">
+    
+    <!-- Bootstrap 5 & Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top glassmorphism">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{{ url_for('index') }}">
+                UNDER ONE ROOF <span class="text-orange">ID</span>
+            </a>
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navMain">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+                    <li class="nav-item dropdown mega-dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
+                        <div class="dropdown-menu mega-menu p-4">
+                            <div class="row text-center">
+                                <div class="col"><a href="{{ url_for('category', slug='outdoor') }}"><i class="fas fa-campground fa-2x text-orange"></i><h6 class="mt-2">Outdoor</h6></a></div>
+                                <div class="col"><a href="{{ url_for('category', slug='furniture') }}"><i class="fas fa-couch fa-2x text-orange"></i><h6 class="mt-2">Furniture</h6></a></div>
+                                <div class="col"><a href="{{ url_for('category', slug='acrylic') }}"><i class="fas fa-square-full fa-2x text-orange"></i><h6 class="mt-2">Acrylic</h6></a></div>
+                                <div class="col"><a href="{{ url_for('category', slug='t-shirt') }}"><i class="fas fa-tshirt fa-2x text-orange"></i><h6 class="mt-2">T-Shirt</h6></a></div>
+                                <div class="col"><a href="{{ url_for('category', slug='perfume') }}"><i class="fas fa-spray-can fa-2x text-orange"></i><h6 class="mt-2">Perfume</h6></a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="{{ url_for('toggle_theme') }}" class="btn btn-sm btn-outline-light rounded-circle"><i class="fas {{ 'fa-sun' if dark_mode else 'fa-moon' }}"></i></a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a href="{{ url_for('admin_login') }}" class="btn btn-sm btn-orange rounded-pill px-3">Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-5 mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="container mt-3">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer py-5 bg-dark-navy text-white mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>UNDER ONE ROOF INDONESIA</h5>
+                    <p class="text-muted">Everything You Need Under One Roof.</p>
+                </div>
+                <div class="col-md-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('index') }}" class="text-muted text-decoration-none">Home</a></li>
+                        <li><a href="{{ url_for('about') }}" class="text-muted text-decoration-none">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Contact</h6>
+                    <p class="text-muted"><i class="fab fa-whatsapp me-2"></i> +62 812 3456 7890</p>
+                </div>
+            </div>
+            <hr class="bg-secondary">
+            <p class="text-center text-muted mb-0">&copy; 2025 Under One Roof Indonesia. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/6281234567890" class="floating-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
